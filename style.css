@@ -910,4 +910,122 @@ main {
 @keyframes slideIn {
     from { transform: translateX(100%); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
+
+}
+
+.ttt-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 10px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cell:hover:not(.taken) {
+    background: rgba(0, 242, 255, 0.1);
+    box-shadow: 0 0 15px var(--accent);
+}
+
+.cell.x { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
+.cell.o { color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
+
+.cell.taken { cursor: default; }
+
+
+.ttt-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 10px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cell:hover:not(.taken) {
+    background: rgba(0, 242, 255, 0.1);
+    box-shadow: 0 0 15px var(--accent);
+}
+
+.cell.x { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
+.cell.o { color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
+
+.cell.taken { cursor: default; }
+
+
+/* Container for the control section */
+.game-controls {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 242, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Status Indicator styling */
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.8;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent);
+    animation: statusPulse 2s infinite;
+}
+
+@keyframes statusPulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.4; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Make the reset button stand out more */
+.reset-btn {
+    min-width: 250px;
+    letter-spacing: 1px;
+    font-weight: bold;
 }
