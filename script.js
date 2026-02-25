@@ -487,3 +487,51 @@ function setView(id, el) {
         displayMentors();
     }
 }
+
+let selectedMentorName = "";
+
+// Open the Secure Form
+function openBooking(mentorName) {
+    selectedMentorName = mentorName;
+    const form = document.getElementById('booking-form');
+    const title = document.getElementById('booking-title');
+    
+    title.innerHTML = `<span style="color:var(--accent)">ENCRYPTED_UPLINK:</span><br>${mentorName}`;
+    form.style.display = 'block';
+    
+    // Add a dark overlay to the background if you want
+    document.body.style.overflow = 'hidden'; 
+}
+
+// Close the Form
+function closeBooking() {
+    document.getElementById('booking-form').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Handle Submission
+function submitRequest() {
+    const problem = document.getElementById('problem-desc').value;
+    const urgency = document.getElementById('urgency').value;
+    const userName = document.getElementById('user-display').innerText;
+
+    if (!problem) return alert("Please describe your challenge.");
+
+    const requestData = {
+        mentorName: selectedMentorName,
+        userName: userName,
+        problem: problem,
+        priority: urgency,
+        time: new Date().toLocaleTimeString()
+    };
+
+    // Save to localStorage for Admin to see
+    let requests = JSON.parse(localStorage.getItem('mentorRequests')) || [];
+    requests.push(requestData);
+    localStorage.setItem('mentorRequests', JSON.stringify(requests));
+
+    // Success Animation/Feedback
+    alert("TRANSMISSION_SUCCESS: Your mentor has been notified.");
+    closeBooking();
+    document.getElementById('problem-desc').value = ""; // Clear form
+}
