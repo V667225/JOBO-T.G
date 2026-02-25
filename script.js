@@ -438,6 +438,8 @@ function endGame(msg, color) {
 // Loss: endGame("CORE_ERROR // LINK_SEVERED", "#ff0055");
 // Draw: endGame("DATA_STASIS // NO_WINNER", "#aaa");
 
+
+
 function displayMentors() {
     const container = document.getElementById('mentor-list'); // Ensure this ID exists in index.html
     if (!container) return;
@@ -487,6 +489,8 @@ function setView(id, el) {
         displayMentors();
     }
 }
+
+
 
 let selectedMentorName = "";
 
