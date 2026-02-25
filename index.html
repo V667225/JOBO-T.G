@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joboteen Guide </title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="login-screen">
+        <div class="login-box">
+            <h1 class="logo-text">JoboTeen</h1>
+            <p class="subtitle">Global Guidance Organization</p>
+            <div class="input-group">
+                <input type="text" id="reg-name" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address">
+                <input type="password" placeholder="Create Password">
+            </div>
+            <button class="btn-shine" onclick="launchPlatform()">Initialize Account</button>
+        </div>
+    </div>
+
+    <div id="main-app">
+<aside class="sidebar" id="main-sidebar">
+    <div class="collapse-btn" onclick="toggleSidebar()">◀</div>
+    
+    <div class="sidebar-logo">
+        <span class="logo-icon">J.</span><span>G-TEEN</span>
+    </div>
+
+    <div class="nav-group">
+        <div class="nav-label">Main Menu</div>
+        <div class="nav-item active" onclick="setView('profile-view', this)">
+            <span class="nav-icon">👤</span><span class="nav-text">Life Story</span>
+        </div>
+        <div class="nav-item" onclick="setView('edu-view', this)">
+            <span class="nav-icon">📚</span><span class="nav-text">Education</span>
+        </div>
+        <div class="nav-item" onclick="setView('mentor-view', this)">
+            <span class="nav-icon">🤝</span><span class="nav-text">Find Mentor</span>
+        </div>
+        <div class="nav-item" onclick="setView('game-view', this)">
+            <span class="nav-icon">🎮</span><span class="nav-text">Funtabu Hub</span>
+        </div>
+    </div>
+
+    <div style="padding: 20px;">
+        <button class="btn-shine" style="width: 100%;" onclick="location.href='admin.html'">⚙️ Admin</button>
+    </div>
+</aside>
+
+        <main class="content">
+            <section id="profile-view" class="view active-view">
+                <h1>Welcome, <span id="user-display" class="highlight">Teenager</span></h1>
+        <div class="story-container">
+                 <h3>My Life Story</h3>
+                    <div class="textarea-wrapper">
+                       <textarea id="life-story-input" 
+                        placeholder="Share your journey, your dreams, or the challenges you've overcome..."
+                         oninput="updateCount()"></textarea>
+                         <div class="textarea-glow"></div>
+                    </div>
+    <div class="story-footer">
+        <span class="char-count"><span id="current-chars">0</span> characters</span>
+        <button class="btn-shine small-btn" onclick="saveStory()">Save to Profile</button>
+    </div>
+</div>
+            </section>
+
+
+
+
+            <section id="mentor-view" class="view">
+    <div class="view-header">
+        <h1>Connect with a Mentor</h1>
+        <p>Your privacy is our priority. Share what's on your mind with a certified guide.</p>
+    </div>
+
+    <div class="mentor-grid">
+        <div class="mentor-card glass-card">
+            <div class="mentor-pic" style="background: url('https://via.placeholder.com/80')"></div>
+            <h3>Mentor Ambani</h3>
+            <span class="specialty">Adolescent Growth</span>
+            <button class="btn-shine small" onclick="openBooking('Ambani')">Book Session</button>
+        </div>
+        
+        <div class="mentor-card glass-card">
+            <div class="mentor-pic" style="background: url('https://via.placeholder.com/80')"></div>
+            <h3>Mentor Vina</h3>
+            <span class="specialty">Career & Mindset</span>
+            <button class="btn-shine small" onclick="openBooking('Vina')">Book Session</button>
+        </div>
+    </div>
+
+    <div id="booking-form" class="glass-card secret-form">
+        <h2 id="booking-title">Share with your Mentor</h2>
+        <div class="input-group">
+            <label>The Problem / Challenge</label>
+            <textarea id="problem-desc" placeholder="Describe what you are going through..."></textarea>
+        </div>
+        <div class="input-group">
+            <label>Urgency Level</label>
+            <select id="urgency">
+                <option value="low">Just need a talk</option>
+                <option value="medium">Feeling stressed</option>
+                <option value="high">Urgent Support Needed</option>
+            </select>
+        </div>
+        <button class="btn-shine" onclick="submitRequest()">Send to Mentor Privately</button>
+    </div>
+</section>
+
+            <section id="gnc-view" class="view">
+                <h1>Mentorship Gallery</h1>
+                <div class="video-grid">
+                    <div class="video-item">Ambani: Adolescent Growth</div>
+                    <div class="video-item">David Goggins: Mental Toughness</div>
+                </div>
+            </section>
+
+            <section id="game-view" class="view">
+                <h1>Mind Atom Game</h1>
+                <p>Boost your neural atoms by clicking targets!</p>
+                <h2 class="score-board">Score: <span id="score-val">0</span></h2>
+                <div id="game-canvas"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
