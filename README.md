@@ -1,5 +1,5 @@
 Joboteenguide.org 🚀
-Joboteenguide.org is a dedicated digital ecosystem built to empower teenagers through the challenges of adolescence. Founded at JOBO National School by Ambani, Vina, and Jakes (students at Nicholls University), the platform integrates mentorship, cognitive development, and skill-sharing to keep youth on a positive life track.
+Joboteenguide.org is a dedicated digital ecosystem built to empower teenagers through the challenges of adolescence. Founded at JOBO National School by Ambani, Vince and Jakes (students at Nicholls University), the platform integrates mentorship, cognitive development, and skill-sharing to keep youth on a positive life track.
 
 🌟 Key Features
 1. Secure Authentication & Profiles
