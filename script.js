@@ -437,3 +437,53 @@ function endGame(msg, color) {
 // Win: endGame("LINK_SUCCESS // +50 NC", "#00f2ff");
 // Loss: endGame("CORE_ERROR // LINK_SEVERED", "#ff0055");
 // Draw: endGame("DATA_STASIS // NO_WINNER", "#aaa");
+
+function displayMentors() {
+    const container = document.getElementById('mentor-list'); // Ensure this ID exists in index.html
+    if (!container) return;
+
+    // Pull from the same key used in admin-logic.js
+    const mentors = JSON.parse(localStorage.getItem('joboMentors')) || [];
+    
+    if (mentors.length === 0) {
+        container.innerHTML = `
+            <div class="glass-card" style="text-align:center; padding: 2rem;">
+                <p>No Mentors are currently online. Check back shortly.</p>
+            </div>`;
+        return;
+    }
+
+    container.innerHTML = ""; // Clear existing
+    mentors.forEach((m) => {
+        const card = document.createElement('div');
+        card.className = "mentor-card glass-card";
+        card.innerHTML = `
+            <div class="mentor-img" style="background-image: url('${m.img}')"></div>
+            <div class="mentor-info">
+                <h3>${m.name}</h3>
+                <p class="specialty">${m.edu}</p>
+                <button class="btn-shine small-btn" onclick="openBooking('${m.name}')">Request Session</button>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+
+function setView(id, el) {
+    // 1. Hide all views
+    document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
+    
+    // 2. Show the target view
+    const target = document.getElementById(id);
+    if(target) target.style.display = 'block';
+
+    // 3. Highlight the sidebar
+    document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+    if(el) el.classList.add('active');
+
+    // 4. THE FIX: If switching to mentors, load them!
+    if(id === 'mentor-view') {
+        displayMentors();
+    }
+}
